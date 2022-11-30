@@ -1,0 +1,69 @@
+﻿@model IEnumerable<MVC.Models.TaskReview>
+
+
+@{
+    ViewData["Title"] = "GetTaskReviewbytheirID";
+}
+
+<h1 style="color:black; font-family:Cambria">Task Review</h1>
+
+<p style="font-weight:600">
+    <a asp-action="Create">Create Review</a>
+</p>
+<table class="table" style="background-color:aliceblue;">
+    <thead style="background-color: cornflowerblue">
+        <tr style="color:antiquewhite">
+            <th>
+                @Html.DisplayNameFor(model => model.ReviewId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TD.Title)
+
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TD.description)
+
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ToDoId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="font-weight:600">
+                    @Html.DisplayFor(modelItem => item.ReviewId)
+                </td>
+                <td style="font-weight:600">
+                    @Html.DisplayFor(modelItem => item.TD.Title)
+                </td>
+                <td style="font-weight:600">
+                    @Html.DisplayFor(modelItem => item.TD.description)
+                </td>
+                <td style="font-weight:600">
+                    @Html.DisplayFor(modelItem => item.Rating)
+                </td>
+                <td style="font-weight:600">
+                    @Html.DisplayFor(modelItem => item.Comment)
+                </td>
+                <td style="font-weight:600">
+                    @Html.DisplayFor(modelItem => item.ToDoId)
+                </td>
+                <td style="font-weight:600">
+                    @Html.ActionLink("Edit", "Edit", new { ReviewID = item.ReviewId }) |
+                    @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+                    @Html.ActionLink("Delete", "Delete", new { ReviewID = item.ReviewId })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,86 @@
+﻿@model MVC.Models.TaskReview
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>TaskReview</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.Rating, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Rating, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Rating, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Comment, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Comment, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Comment, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ToDoId, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ToDoId, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ToDoId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    @{
+        ViewData["Title"] = "Create";
+    }
+
+    <h1>Create </h1>
+
+    <h4>TaskReview</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                @*<div class="form-group">
+                        <label asp-for="ReviewId" class="control-label"></label>
+                        <input asp-for="ReviewId" class="form-control" />
+                        <span asp-validation-for="ReviewId" class="text-danger"></span>
+                    </div>*@
+                <div class="form-group">
+                    <label asp-for="Rating" class="control-label" style="color:black ; font-weight:500"></label>
+                    <input type="number" min="1" max="5" asp-for="Rating" class="form-control" style="color:black ; font-weight:400" />
+                    <span asp-validation-for="Rating" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Comment" class="control-label" style="color:black ; font-weight:500"></label>
+                    <input asp-for="Comment" class="form-control" style="color:black ; font-weight:400" />
+                    <span asp-validation-for="Comment" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ToDoId" class="control-label" style="color:black ; font-weight:500"></label>
+                    <input asp-for="ToDoId" class="form-control" style="color:black ; font-weight:400" />
+                    <span asp-validation-for="ToDoId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

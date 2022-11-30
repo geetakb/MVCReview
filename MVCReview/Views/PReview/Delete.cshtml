@@ -1,0 +1,41 @@
+﻿@model MVC.Models.TaskReview
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3 style="color:black ; font-size:large">Are you sure you want to delete this Task Review?</h3>
+<div>
+    @*<h4>TaskReview</h4>*@
+    <hr />
+
+
+    @using (Html.BeginForm())
+    {
+        <p>
+            <fieldset>
+                <legend>TaskReview</legend>
+
+                <div class="display-label" style="color:black ; font-weight:500">ReviewId</div>
+                <div class="display-field" style="color:black ; font-weight:400"> @Model.ReviewId</div>
+                <div class="display-label" style="color:black ; font-weight:500">Rating</div>
+                <div class="display-field" style="color:black ; font-weight:400"> @Model.Rating</div>
+                <div class="display-label" style="color:black ; font-weight:500">Comment</div>
+                <div class="display-field" style="color:black ; font-weight:400"> @Model.Comment</div>
+                <div class="display-label" style="color:black ; font-weight:500">ToDoid</div>
+                <div class="display-field" style="color:black ; font-weight:400"> @Model.ToDoId</div>
+
+                <div class="form-group" style="color:black ; font-weight:500">
+                    <input type="submit" value="Delete Review" />
+                </div>
+                <div style="color:black ; font-weight:500">
+                    @Html.ActionLink("Back to  Review List", "GetReviewList")
+                </div>
+            </fieldset>
+        </p>
+    }
+
+  
+</div>

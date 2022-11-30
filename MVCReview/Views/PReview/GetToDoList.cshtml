@@ -1,0 +1,66 @@
+﻿@model IEnumerable<MVC.Models.ToDo>
+
+@{
+    ViewData["Title"] = "GetToDoList";
+}
+
+<h1 style="color:black; font-family:Cambria">List Of Tasks </h1>
+
+@*<p>
+        <a asp-action="Create">Create New</a>
+    </p>*@
+<table class="table" style="background-color:aliceblue;">
+    <thead style="background-color:cornflowerblue">
+        <tr style="color:black">
+            <th>
+                @Html.DisplayNameFor(model => model.ToDoId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssignedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DueDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="font-weight:600">
+                    @Html.DisplayFor(modelItem => item.ToDoId)
+                </td>
+                <td style="font-weight:600">
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td style="font-weight:600">
+                    @Html.DisplayFor(modelItem => item.description)
+                </td>
+                <td style="font-weight:600">
+                    @Html.DisplayFor(modelItem => item.Category)
+                </td>
+                <td style="font-weight:600">
+                    @Html.DisplayFor(modelItem => item.AssignedDate)
+                </td>
+                <td style="font-weight:600">
+                    @Html.DisplayFor(modelItem => item.DueDate)
+                </td>
+                <td style="font-weight:600; color : black">
+                    @Html.ActionLink("GiveReview", "GetTaskReviewbytheirID", new { ToDoId = item.ToDoId })
+                    @*@Html.ActionLink("ReviewList", "GetTaskReviewbytheirID", new { ToDoId = item.ToDoId }) |*@
+                    @*@Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
